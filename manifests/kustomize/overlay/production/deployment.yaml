@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-server
+spec:
+  template:
+    spec:
+      containers:
+      - image: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/echo-server:v2.0
+        name: echo-server
