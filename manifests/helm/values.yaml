@@ -8,7 +8,7 @@ image:
   repository: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/echo-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.0"
+  tag: "v1.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -43,7 +43,7 @@ service:
   port: 8080
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
