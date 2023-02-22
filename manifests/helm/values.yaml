@@ -37,9 +37,9 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  #type: LoadBalancer
+  type: LoadBalancer
   #type: NodePort
-  type: ClusterIP
+  #type: ClusterIP
   port: 8080
 
 ingress:
