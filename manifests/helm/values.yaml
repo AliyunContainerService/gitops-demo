@@ -2,7 +2,7 @@ image:
   repository: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/echo-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0"
+  tag: "v2.0"
 
 service:
   type: LoadBalancer
