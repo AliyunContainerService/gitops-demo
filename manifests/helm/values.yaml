@@ -1,5 +1,3 @@
-replicaCount: 1
-
 image:
   repository: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/echo-server
   pullPolicy: IfNotPresent
@@ -10,4 +8,3 @@ service:
   type: LoadBalancer
   #type: NodePort
   #type: ClusterIP
-  port: 8080
