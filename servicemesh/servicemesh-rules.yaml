@@ -1,0 +1,127 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: bookinfo-gateway
+  namespace: demo
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - '*'
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: productpage-destination
+  namespace: demo
+spec:
+  host: productpage.demo.svc.cluster.local
+  subsets:
+    - labels:
+        cluster: ack-cloud
+      name: ack
+    - labels:
+        cluster: ack-distro-onprem
+      name: distro
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: bookinfo
+  namespace: demo
+spec:
+  gateways:
+    - bookinfo-gateway
+  hosts:
+    - '*'
+  http:
+    - match:
+        - uri:
+            exact: /productpage
+        - uri:
+            prefix: /static
+        - uri:
+            exact: /login
+        - uri:
+            exact: /logout
+        - uri:
+            prefix: /api/v1/products
+      route:
+        - destination:
+            host: productpage
+            port:
+              number: 9080
+            subset: ack
+          weight: 80
+        - destination:
+            host: productpage
+            port:
+              number: 9080
+            subset: distro
+          weight: 20
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: details-failover
+  namespace: demo
+spec:
+  host: details.demo.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxRequestsPerConnection: 1
+    loadBalancer:
+      localityLbSetting:
+        enabled: true
+      simple: ROUND_ROBIN
+    outlierDetection:
+      baseEjectionTime: 1m
+      consecutive5xxErrors: 1
+      interval: 1s
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: ratings-failover
+  namespace: demo
+spec:
+  host: ratings.demo.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxRequestsPerConnection: 1
+    loadBalancer:
+      localityLbSetting:
+        enabled: true
+      simple: ROUND_ROBIN
+    outlierDetection:
+      baseEjectionTime: 1m
+      consecutive5xxErrors: 1
+      interval: 1s
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: reviews-failover
+  namespace: demo
+spec:
+  host: reviews.demo.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxRequestsPerConnection: 1
+    loadBalancer:
+      localityLbSetting:
+        enabled: true
+      simple: ROUND_ROBIN
+    outlierDetection:
+      baseEjectionTime: 1m
+      consecutive5xxErrors: 1
+      interval: 1s
+
