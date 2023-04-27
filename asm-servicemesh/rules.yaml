@@ -81,7 +81,7 @@ spec:
         enabled: true
       simple: ROUND_ROBIN
     outlierDetection:
-      baseEjectionTime: 1m
+      baseEjectionTime: 60s
       consecutive5xxErrors: 1
       interval: 1s
 ---
@@ -101,7 +101,7 @@ spec:
         enabled: true
       simple: ROUND_ROBIN
     outlierDetection:
-      baseEjectionTime: 1m
+      baseEjectionTime: 60s
       consecutive5xxErrors: 1
       interval: 1s
 ---
@@ -121,7 +121,7 @@ spec:
         enabled: true
       simple: ROUND_ROBIN
     outlierDetection:
-      baseEjectionTime: 1m
+      baseEjectionTime: 60s
       consecutive5xxErrors: 1
       interval: 1s
 
