@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-demo
+  name: web-demo
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-demo
+  template:
+    metadata:
+      labels:
+        app: web-demo
+    spec:
+      containers:
+      - image: "{{ .Values.registryDomain }}/{{ .Values.image }}:{{ .Values.tag }}"
+        name: web-demo
+        env:
+        - name: ENV_NAME
+          value: "{{ .Values.envName }}"
