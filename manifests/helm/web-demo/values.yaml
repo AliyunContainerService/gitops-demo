@@ -5,6 +5,8 @@ tag: 0.4.0
 
 envName: cluster-oneregion
 
+clusterId: ""
+
 global:
   nodeSelector: {}
 
