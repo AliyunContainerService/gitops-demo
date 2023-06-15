@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    ingress-controller: nginx
+  name: rollouts-demo-stable
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: rollouts-demo.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: rollouts-demo-stable
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+

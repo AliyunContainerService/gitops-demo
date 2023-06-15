@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    interval: 5m
+    successCondition: result[0] >= 0.95
+    provider:
+      prometheus:
+        address: http://arms-prom-server.arms-prom.svc.cluster.local:9090
+        query: |
+          sum(
+            irate(nginx_ingress_controller_requests{status=~"(1|2).*", canary!="" ,service="{{args.service-name}}"}[5m]))
+            /
+            sum(irate(nginx_ingress_controller_requests{canary!="",service="{{args.service-name}}"}[5m])
+          )
