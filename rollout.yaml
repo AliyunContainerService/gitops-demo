@@ -6,13 +6,13 @@ spec:
   replicas: 4
   strategy:
     canary:
-#      analysis:
-#        templates:
-#        - templateName: success-rate
-#        startingStep: 2
-#        args:
-#          - name: service-name
-#            value: rollouts-demo-stable
+      analysis:
+        templates:
+        - templateName: success-rate
+        startingStep: 2
+        args:
+          - name: service-name
+            value: rollouts-demo-stable
       canaryService: rollouts-demo-canary
       stableService: rollouts-demo-stable
       trafficRouting:
@@ -20,13 +20,13 @@ spec:
           stableIngress: rollouts-demo-stable
       steps:
         - setWeight: 20
-        - pause: {duration: 1m}
+        - pause: {duration: 5m}
         - setWeight: 40
-        - pause: {duration: 1m}
+        - pause: {duration: 5m}
         - setWeight: 60
-        - pause: {duration: 1m}
+        - pause: {duration: 5m}
         - setWeight: 80
-        - pause: {duration: 1m}
+        - pause: {duration: 5m}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
