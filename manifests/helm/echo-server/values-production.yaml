@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+replicaCount: 2
 
 image:
   echoServer:
@@ -18,9 +18,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 secretManager:
-  enabled: false
-  secretName: db-cred-dev
-  kmsKey: db-cred-dev
+  enabled: true
+  secretName: db-cred-prod
+  kmsKey: db-cred-prod
   dataName: dbinfo
   versionStage: ACSCurrent
 

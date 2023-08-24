@@ -6,5 +6,5 @@ spec:
   template:
     spec:
       containers:
-      - image: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/echo-server:v2.0
+      - image: demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-server:v2.0
         name: echo-server

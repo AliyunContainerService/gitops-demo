@@ -18,9 +18,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 secretManager:
-  enabled: false
-  secretName: db-cred-dev
-  kmsKey: db-cred-dev
+  enabled: true
+  secretName: db-cred-staging
+  kmsKey: db-cred-staging
   dataName: dbinfo
   versionStage: ACSCurrent
 

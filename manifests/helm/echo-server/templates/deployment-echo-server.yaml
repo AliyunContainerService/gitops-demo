@@ -31,7 +31,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.echoServer.repository }}:{{ .Values.image.echoServer.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -47,6 +47,18 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+{{- if .Values.secretManager.enabled }}
+          volumeMounts:
+          - mountPath: /etc/config
+            name: config
+            readOnly: true
+      volumes:
+        - name: config
+          secret:
+            defaultMode: 420
+            secretName: {{ .Values.secretManager.secretName }}
+            optional: true
+{{- end}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

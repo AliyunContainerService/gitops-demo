@@ -60,3 +60,27 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{- define "echo-web-server.name" -}}
+{{- default "echo-web-server" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{- define "echo-web-server.fullname" -}}
+{{- printf "%s-%s" .Release.Name "echo-web-server" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{- define "echo-web-server.labels" -}}
+helm.sh/chart: {{ include "echo-server.chart" . }}
+{{ include "echo-web-server.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+
+{{- define "echo-web-server.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "echo-web-server.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
