@@ -1,3 +1,0 @@
-kustomize:
-  images:
-  - demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-server=demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-server:v2.1
