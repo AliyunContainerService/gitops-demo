@@ -24,6 +24,9 @@ secretManager:
   dataName: dbinfo
   versionStage: ACSCurrent
 
+rollout:
+  enabled: true
+
 
 serviceAccount:
   # Specifies whether a service account should be created
