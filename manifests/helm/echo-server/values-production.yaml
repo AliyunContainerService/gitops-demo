@@ -6,11 +6,11 @@ replicaCount: 2
 
 image:
   echoServer:
-    repository: demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-server
-    tag: "v1.0"
+    repository: demo-registry.cn-hongkong.cr.aliyuncs.com/acs/echo-server
+    tag: "v1"
   echoServerForTest:
-    repository: demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-web-server
-    tag: "v1.0"
+    repository: demo-registry.cn-hongkong.cr.aliyuncs.com/acs/echo-web-server
+    tag: "v1"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -18,7 +18,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 secretManager:
-  enabled: true
+  enabled: false
   secretName: db-cred-prod
   kmsKey: db-cred-prod
   dataName: dbinfo
