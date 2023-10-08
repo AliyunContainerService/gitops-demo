@@ -8,7 +8,7 @@ image:
   echoServer:
     repository: demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-server
     tag: "v1.0"
-  echoServerForTest:
+  echoWebServer:
     repository: demo-test-registry.cn-hangzhou.cr.aliyuncs.com/cidemo/echo-web-server
     tag: "v1.0"
   pullPolicy: IfNotPresent
