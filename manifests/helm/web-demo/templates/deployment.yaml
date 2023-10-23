@@ -4,7 +4,6 @@ metadata:
   labels:
     app: web-demo
   name: web-demo
-  namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
@@ -20,7 +19,8 @@ spec:
     spec:
       containers:
       - image: "{{ .Values.registryDomain }}/{{ .Values.image }}:{{ .Values.tag }}"
+        imagePullPolicy: Always
         name: web-demo
         env:
         - name: ENV_NAME
-          value: "{{ .Values.envName }}"
+          value: "{{ .Values.envCluster }}"

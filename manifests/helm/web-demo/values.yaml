@@ -1,9 +1,8 @@
+registryDomain: registry-cn-hangzhou.ack.aliyuncs.com
+image: acs/web-demo
+tag: 0.5.0
 
-registryDomain: acr-multiple-clusters-registry.cn-hangzhou.cr.aliyuncs.com
-image: ack-multiple-clusters/web-demo
-tag: 0.4.0
-
-envName: cluster-oneregion
+envCluster: cluster-oneregion
 
 clusterId: ""
 
