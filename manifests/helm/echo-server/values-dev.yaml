@@ -19,7 +19,7 @@ fullnameOverride: ""
 
 
 secretManager:
-  enabled: true
+  enabled: false
   secretName: db-cred-dev
   kmsKey: db-cred-dev
   dataName: dbinfo
