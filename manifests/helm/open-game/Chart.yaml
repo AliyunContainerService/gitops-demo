@@ -1,0 +1,6 @@
+apiVersion: v1
+appVersion: 0.1.0
+description: A Helm chart for Open Game
+name: open-game
+type: application
+version: 0.1.0-rc001
