@@ -26,7 +26,7 @@ spec:
         cluster: ack-cloud
       name: ack
     - labels:
-        cluster: ack-distro-onprem
+        cluster: ack-cloud-2
       name: distro
 ---
 apiVersion: networking.istio.io/v1beta1

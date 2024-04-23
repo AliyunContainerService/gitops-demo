@@ -45,18 +45,18 @@ metadata:
   namespace: demo
   labels:
     app: details
-    cluster: ack-distro-onprem
+    cluster: ack-cloud-2
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: details
-      cluster: ack-distro-onprem
+      cluster: ack-cloud-2
   template:
     metadata:
       labels:
         app: details
-        cluster: ack-distro-onprem
+        cluster: ack-cloud-2
     spec:
       serviceAccountName: bookinfo-details
       containers:
@@ -101,18 +101,18 @@ metadata:
   namespace: demo
   labels:
     app: reviews
-    cluster: ack-distro-onprem
+    cluster: ack-cloud-2
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: reviews
-      cluster: ack-distro-onprem
+      cluster: ack-cloud-2
   template:
     metadata:
       labels:
         app: reviews
-        cluster: ack-distro-onprem
+        cluster: ack-cloud-2
     spec:
       serviceAccountName: bookinfo-reviews
       containers:
@@ -170,18 +170,18 @@ metadata:
   namespace: demo
   labels:
     app: productpage
-    cluster: ack-distro-onprem
+    cluster: ack-cloud-2
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: productpage
-      cluster: ack-distro-onprem
+      cluster: ack-cloud-2
   template:
     metadata:
       labels:
         app: productpage
-        cluster: ack-distro-onprem
+        cluster: ack-cloud-2
     spec:
       serviceAccountName: bookinfo-productpage
       containers:
