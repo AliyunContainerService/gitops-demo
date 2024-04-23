@@ -103,7 +103,7 @@ metadata:
     app: reviews
     cluster: ack-distro-onprem
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: reviews
