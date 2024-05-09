@@ -1,9 +1,0 @@
-
-image: registry.cn-beijing.aliyuncs.com/chrisliu95/minecraft-demo:test-4
-sidecarImage: registry.cn-hangzhou.aliyuncs.com/gs-demo/sidecar:v0.1 # 可被更新至v0.2
-
-# 每个地域数量有差异
-replicas: 2
-
-scaled:
-  enabled: true
