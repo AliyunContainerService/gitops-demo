@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: bookinfo-gateway
-  namespace: demo
 spec:
   selector:
     istio: ingressgateway
@@ -18,7 +17,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: productpage-destination
-  namespace: demo
 spec:
   host: productpage.demo.svc.cluster.local
   subsets:
@@ -33,7 +31,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: bookinfo
-  namespace: demo
 spec:
   gateways:
     - bookinfo-gateway
@@ -69,7 +66,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: details-failover
-  namespace: demo
 spec:
   host: details.demo.svc.cluster.local
   trafficPolicy:
@@ -89,7 +85,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: ratings-failover
-  namespace: demo
 spec:
   host: ratings.demo.svc.cluster.local
   trafficPolicy:
@@ -109,7 +104,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: reviews-failover
-  namespace: demo
 spec:
   host: reviews.demo.svc.cluster.local
   trafficPolicy:
