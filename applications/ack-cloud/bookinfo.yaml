@@ -5,7 +5,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: details
-  namespace: demo
+  namespace: kiali-demo
   labels:
     app: details
     service: details
@@ -20,7 +20,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: bookinfo-details
-  namespace: demo
+  namespace: kiali-demo
   labels:
     account: details
 ---
@@ -28,7 +28,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: details-ack
-  namespace: demo
+  namespace: kiali-demo
   labels:
     app: details
     cluster: ack-cloud
@@ -61,7 +61,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: reviews
-  namespace: demo
+  namespace: kiali-demo
   labels:
     app: reviews
     service: reviews
@@ -76,7 +76,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: bookinfo-reviews
-  namespace: demo
+  namespace: kiali-demo
   labels:
     account: reviews
 ---
@@ -84,7 +84,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reviews-ack
-  namespace: demo
+  namespace: kiali-demo
   labels:
     app: reviews
     cluster: ack-cloud
@@ -136,7 +136,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: productpage
-  namespace: demo
+  namespace: kiali-demo
   labels:
     app: productpage
     service: productpage
@@ -151,7 +151,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: bookinfo-productpage
-  namespace: demo
+  namespace: kiali-demo
   labels:
     account: productpage
 ---
@@ -159,7 +159,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productpage-ack
-  namespace: demo
+  namespace: kiali-demo
   labels:
     app: productpage
     cluster: ack-cloud

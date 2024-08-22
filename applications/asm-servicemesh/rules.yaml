@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
   name: bookinfo-gateway
-  namespace: demo
+  namespace: kiali-demo
 spec:
   selector:
     istio: ingressgateway
@@ -18,9 +18,9 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: productpage-destination
-  namespace: demo
+  namespace: kiali-demo
 spec:
-  host: productpage.demo.svc.cluster.local
+  host: productpage.kiali-demo.svc.cluster.local
   subsets:
     - labels:
         cluster: ack-cloud
@@ -33,7 +33,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: bookinfo
-  namespace: demo
+  namespace: kiali-demo
 spec:
   gateways:
     - bookinfo-gateway
@@ -69,9 +69,9 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: details-failover
-  namespace: demo
+  namespace: kiali-demo
 spec:
-  host: details.demo.svc.cluster.local
+  host: details.kiali-demo.svc.cluster.local
   trafficPolicy:
     connectionPool:
       http:
@@ -89,9 +89,9 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: ratings-failover
-  namespace: demo
+  namespace: kiali-demo
 spec:
-  host: ratings.demo.svc.cluster.local
+  host: ratings.kiali-demo.svc.cluster.local
   trafficPolicy:
     connectionPool:
       http:
@@ -109,9 +109,9 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: reviews-failover
-  namespace: demo
+  namespace: kiali-demo
 spec:
-  host: reviews.demo.svc.cluster.local
+  host: reviews.kiali-demo.svc.cluster.local
   trafficPolicy:
     connectionPool:
       http:
