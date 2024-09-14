@@ -7,6 +7,8 @@ envName: cluster-oneregion
 
 clusterId: ""
 
+isNodePort: false
+
 global:
   nodeSelector: {}
 
