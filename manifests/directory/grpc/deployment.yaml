@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: grpc-service
+  template:
+    metadata:
+      labels:
+        run: grpc-service
+    spec:
+      containers:
+        - image: registry.cn-hangzhou.aliyuncs.com/acs-sample/grpc-server:latest
+          imagePullPolicy: Always
+          name: grpc-service
+          ports:
+            - containerPort: 50051
+              protocol: TCP
+      restartPolicy: Always
