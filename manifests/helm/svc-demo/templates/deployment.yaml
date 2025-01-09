@@ -1,0 +1,37 @@
+{{- if not .Values.onlyService }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.envSvcName }}
+  name: svc-demo-{{ .Values.envSvcName }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.envSvcName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.envSvcName }}
+        {{ if .Values.clusterId }}
+        topology.istio.io/cluster: {{ .Values.clusterId }}
+        {{ end }}
+    spec:
+      containers:
+        - image: "{{ .Values.registryDomain }}/{{ .Values.image }}:{{ .Values.tag }}"
+          imagePullPolicy: Always
+          name: svc-demo
+          env:
+            - name: ENV_NAME
+              value: "{{ .Values.envCluster }}"
+            - name: MY_SERVICE_NAME
+              value: "{{ .Values.envSvcName }}"
+            {{ if .Values.envCallSvcName}}
+            - name: SERVICE_URL
+              value: "http://{{ .Values.envCallSvcName }}.{{ .Release.Namespace }}:{{ .Values.envSvcPort }}/{{ .Values.envAPI }}"
+            {{ end }}
+            - name: MY_CLUSTER
+              value: "{{ .Values.envCluster }}"
+{{- end }}

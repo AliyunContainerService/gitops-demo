@@ -1,0 +1,23 @@
+apiVersion: v1       
+kind: Service
+metadata:
+  name: {{ .Values.envSvcName }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: {{ .Values.envSvcName }}
+  {{ if .Values.isNodePort }}
+  type: NodePort
+  ports:
+  - port: {{ .Values.envSvcPort }}
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 30100
+  {{ else }}
+  type: ClusterIP
+  ports:
+  - port: {{ .Values.envSvcPort }}
+    protocol: TCP
+    targetPort: 8080
+  {{ end }}
+  sessionAffinity: None
