@@ -1,7 +1,7 @@
 
-registryDomain: registry-cn-hongkong.ack.aliyuncs.com
-image: acs/web-demo
-tag: v0.6.0-2
+registryDomain: registry-cn-hangzhou.ack.aliyuncs.com
+image: dev/web-demo
+tag: v0.6.0
 
 replicas: 1
 
