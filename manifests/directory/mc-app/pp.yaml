@@ -1,0 +1,18 @@
+apiVersion: policy.one.alibabacloud.com/v1alpha1
+kind: PropagationPolicy
+metadata:
+  name: echo-server-policy
+  namespace: default
+spec:
+  preserveResourcesOnDeletion: false
+  propagateDeps: true
+  placement:
+    replicaScheduling:
+      replicaSchedulingType: Duplicated
+  resourceSelectors:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: echo-server
+    - apiVersion: v1
+      kind: Service
+      name: echo-server

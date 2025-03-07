@@ -1,0 +1,19 @@
+apiVersion: policy.one.alibabacloud.com/v1alpha1
+kind: OverridePolicy
+metadata:
+  name: echo-server-op
+  namespace: default
+spec:
+  resourceSelectors:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: echo-server
+  overrideRules:
+    - overriders:
+        plaintext:
+          - operator: replace
+            path: /spec/replicas
+            value: 1
+#      targetCluster:
+#        clusterNames:
+#          - clusterid
