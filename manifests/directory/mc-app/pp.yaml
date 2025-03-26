@@ -8,7 +8,10 @@ spec:
   propagateDeps: true
   placement:
     replicaScheduling:
-      replicaSchedulingType: Duplicated
+      replicaSchedulingType: Divided
+      replicaDivisionPreference: Weighted
+      weightPreference:
+        dynamicWeight: AvailableReplicas
   resourceSelectors:
     - apiVersion: apps/v1
       kind: Deployment

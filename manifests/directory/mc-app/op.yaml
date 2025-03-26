@@ -11,9 +11,9 @@ spec:
   overrideRules:
     - overriders:
         plaintext:
-          - operator: replace
-            path: /spec/replicas
-            value: 1
+          - operator: add
+            path: /metadata/labels/a
+            value: a1
 #      targetCluster:
 #        clusterNames:
 #          - clusterid
