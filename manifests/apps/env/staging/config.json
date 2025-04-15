@@ -1,0 +1,7 @@
+{
+  "owner": "cluster-admin@company.com",
+  "name": "staging",
+  "cluster_address": {
+    "bj": "https://2.2.3.4:6443"
+  }
+}
