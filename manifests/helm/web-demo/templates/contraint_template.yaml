@@ -4,6 +4,9 @@ metadata:
   name: acknamespacesdeleteprotection
   annotations:
     description: "Protect to delete specific namespace."
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   crd:
     spec:
