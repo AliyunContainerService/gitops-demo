@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-demo
+    a: b
+  name: web-demo
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-demo
+  template:
+    metadata:
+      labels:
+        app: web-demo
+        {{ if .Values.clusterId }}
+        topology.istio.io/cluster: {{ .Values.clusterId }}
+        {{ end }}
+    spec:
+      containers:
+        - image: "{{ .Values.registryDomain }}/{{ .Values.image }}:{{ .Values.tag }}"
+          imagePullPolicy: Always
+          name: web-demo
+          env:
+            - name: ENV_NAME
+              value: "{{ .Values.envCluster }}"
