@@ -3,6 +3,7 @@ kind: ACKNamespacesDeleteProtection
 metadata:
   annotations:
     description: Protect to delete specific namespace.
+    argocd.argoproj.io/sync-wave: "1"
   name: namespace-delete-protection-zhx9c
 spec:
   enforcementAction: deny

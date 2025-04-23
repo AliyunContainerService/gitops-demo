@@ -1,0 +1,33 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: acknamespacesdeleteprotection
+  annotations:
+    description: "Protect to delete specific namespace."
+spec:
+  crd:
+    spec:
+      names:
+        kind: ACKNamespacesDeleteProtection
+      validation:
+        # Schema for the `parameters` field
+        legacySchema: true
+        openAPIV3Schema:
+          type: object
+          properties:
+            protectionNamespaces:
+              type: array
+              items:
+                type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package acknamespacesdeleteprotection
+
+        violation[{"msg": msg}] {
+          input.review.operation == "DELETE"
+          oldObj := input.review.oldObject
+          name := oldObj.metadata.name
+          input.parameters.protectionNamespaces[_] == name
+          msg := sprintf("not allow to delete protection namespace %s.", [name])
+        }
